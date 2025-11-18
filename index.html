@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadata & Required Settings -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio Homepage</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+        nav {
+            background: #444;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #00e1ff;
+        }
+        section {
+            padding: 20px;
+            background: white;
+            margin: 20px;
+            border-radius: 8px;
+        }
+        img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        form button {
+            background: #333;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        form button:hover {
+            background: #00a8c6;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Personalized Welcome Message -->
+    <header>
+        <h1 id="welcomeMessage">Welcome to My Portfolio</h1>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            Hello! My name is Des, and I am an aspiring software developer currently focusing on JavaScript, 
+            web development, and building clean, efficient applications. I enjoy learning new technologies 
+            and creating projects that challenge my creativity and technical skills.
+        </p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>My Projects</h2>
+        <p>Below are some of my GitHub projects (or placeholders if no projects exist yet):</p>
+
+        <a href="https://github.com/yourusername/project1" target="_blank">
+            <img src="https://via.placeholder.com/200x150" alt="Project 1">
+        </a>
+
+        <a href="https://github.com/yourusername/project2" target="_blank">
+            <img src="https://via.placeholder.com/200x150" alt="Project 2">
+        </a>
+
+        <a href="https://github.com/yourusername/project3" target="_blank">
+            <img src="https://via.placeholder.com/200x150" alt="Project 3">
+        </a>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>Feel free to reach out using the form below:</p>
+
+        <form>
+            <label>Your Name:</label>
+            <input type="text" name="senderName" placeholder="Enter your name">
+
+            <label>Your Email Address:</label>
+            <input type="email" name="email" placeholder="Enter your email">
+
+            <label>Subject:</label>
+            <input type="text" name="subject" placeholder="Subject">
+
+            <label>Message:</label>
+            <textarea name="message" placeholder="Write your message..." rows="6"></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <!-- JavaScript Interaction -->
+    <script>
+        // Prompt user for their name
+        // Store the input in a variable
+        let userName = prompt("Welcome! What is your name?");
+
+        // Update the welcome message dynamically
+        // Use conditional so empty input doesn't break page
+        if (userName && userName.trim() !== "") {
+            document.getElementById("welcomeMessage").textContent =
+                "Welcome, " + userName + "!";
+        }
+    </script>
+
+</body>
+</html>
