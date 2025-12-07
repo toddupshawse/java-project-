@@ -1,162 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- 
-        Name: Todd Maurice Upshaw (Desert Eagle)
-        Date: 2025-11-30
-        Purpose: Week 1 portfolio expanded with dynamic DOM elements, timed messages, and interactive content.
-    -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Interactive Portfolio</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; background: #f4f4f4; transition: background 0.4s, color 0.4s; }
-        .dark-mode { background: #121212; color: white; }
-        header { background: #333; color: #fff; padding: 15px; text-align: center; }
-        nav { background: #444; padding: 10px; text-align: center; }
-        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
-        section { padding: 20px; background: white; margin: 20px; border-radius: 8px; }
-        .dark-mode section { background: #1e1e1e; color: white; }
-        img { width: 200px; height: 150px; object-fit: cover; margin-right: 10px; border-radius: 5px; }
-        form input, form textarea { width: 100%; padding: 10px; margin-top: 10px; }
-        form button { background: #333; color: white; padding: 10px 15px; border: none; margin-top: 10px; cursor: pointer; }
-        .featured-box { border: 2px solid #0077ff; padding: 15px; border-radius: 8px; margin-top: 10px; }
-        .dark-mode .featured-box { border-color: #00c8ff; }
-        #darkModeToggle { margin: 15px; transform: scale(1.3); }
-        #notification { text-align: center; font-weight: bold; color: green; margin-bottom: 10px; display: none; }
-    </style>
+    <title>Portfolio – Persistent Storage Assignment</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <!-- Dark Mode Toggle -->
-    <label style="margin-left: 20px;">
-        <input type="checkbox" id="darkModeToggle"> Dark Mode
+    <label class="theme-toggle">
+        <input type="checkbox" id="darkToggle">
+        Dark Mode
     </label>
 
+    <!-- Opening Modal -->
+    <div id="welcomeModal" class="modal">
+        <div class="modal-content">
+            <h2>This page is a work in progress.</h2>
+            <button id="closeModal">Close</button>
+        </div>
+    </div>
+
     <header>
-        <h1 id="welcomeMessage">Welcome to My Portfolio</h1>
+        <h1 id="title">My Portfolio</h1>
     </header>
 
-    <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#featured">Featured Content</a>
-        <a href="#contact">Contact</a>
-    </nav>
+    <section id="projects">
+        <h2>Projects</h2>
+        <p>Here are some of my latest projects.</p>
+    </section>
 
-    <!-- Notification message (added dynamically after delay) -->
-    <div id="notification"></div>
-
-    <!-- About Section -->
     <section id="about">
         <h2>About Me</h2>
-        <p>Hello! My name is Des, and I am an aspiring software developer focusing on full-stack development.</p>
-        <h3>My Skills</h3>
-        <ul id="skillsList"></ul>
+        <p>This is where information about me will go.</p>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2>My Projects</h2>
-        <p>Below are some of my GitHub projects:</p>
-        <div id="projectsGallery"></div>
-    </section>
-
-    <!-- Featured Content Section -->
-    <section id="featured">
-        <h2>Featured Content</h2>
-        <div id="universityResources" class="featured-box">
-            <h3>University Resources</h3>
-            <a href="https://www.ecpi.edu" target="_blank">ECPI Program Homepage</a>
-        </div>
-        <div id="personalProjects" class="featured-box">
-            <h3>Personal Projects</h3>
-            <a href="https://github.com" target="_blank"><img src="https://via.placeholder.com/200x150"></a>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
+    <!-- Contact Form -->
     <section id="contact">
         <h2>Contact Me</h2>
+
         <form id="contactForm">
-            <label>Your Name:</label>
-            <input type="text" id="senderName" placeholder="Enter your name">
-            <label>Your Email:</label>
-            <input type="email" id="email" placeholder="Enter your email">
-            <label>Subject:</label>
-            <input type="text" id="subject" placeholder="Subject">
-            <label>Message:</label>
-            <textarea id="message" rows="6"></textarea>
-            <button type="submit">Submit</button>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <textarea placeholder="Your Message" required></textarea>
+
+            <button id="submitBtn" type="submit">
+                Submit
+                <span class="tooltip">Click to send your message!</span>
+            </button>
         </form>
+
+        <p id="formStatus"></p>
     </section>
 
-    <script>
-        // Welcome message
-        let userName = prompt("Welcome! What is your name?");
-        if (userName && userName.trim() !== "") {
-            document.getElementById("welcomeMessage").textContent = "Welcome, " + userName + "!";
-        }
-
-        // Skills loop
-        const skills = ["HTML", "CSS", "JavaScript", "Git", "GitHub"];
-        const skillsList = document.getElementById("skillsList");
-        skills.forEach(skill => {
-            let li = document.createElement("li");
-            li.textContent = skill;
-            skillsList.appendChild(li);
-        });
-
-        // Projects gallery dynamically
-        const projectsGallery = document.getElementById("projectsGallery");
-        for (let i = 1; i <= 3; i++) {
-            let img = document.createElement("img");
-            img.src = `https://via.placeholder.com/200x150?text=Project+${i}`;
-            img.alt = `Project ${i}`;
-            projectsGallery.appendChild(img);
-        }
-
-        // Conditional display for featured boxes
-        const projectsCount = 3;
-        if (projectsCount < 3) {
-            document.getElementById("universityResources").style.display = "block";
-        } else {
-            document.getElementById("universityResources").style.display = "none";
-        }
-
-        // Dark mode toggle
-        document.getElementById("darkModeToggle").addEventListener("change", function () {
-            document.body.classList.toggle("dark-mode");
-        });
-
-        // Notification after 2 seconds
-        setTimeout(() => {
-            const notification = document.getElementById("notification");
-            notification.textContent = "Check out my new projects below!";
-            notification.style.display = "block";
-        }, 2000);
-
-        // Contact Form with timed submission
-        document.getElementById("contactForm").addEventListener("submit", function (event) {
-            event.preventDefault();
-            const form = this;
-            const notification = document.getElementById("notification");
-
-            // Show sending message
-            notification.textContent = "Sending message...";
-            notification.style.color = "orange";
-            notification.style.display = "block";
-
-            setTimeout(() => {
-                const name = document.getElementById("senderName").value;
-                notification.textContent = "Thank you, " + name + "! Your message has been sent.";
-                notification.style.color = "green";
-
-                // Reset form
-                form.reset();
-            }, 2500);
-        });
-    </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
