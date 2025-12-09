@@ -1,58 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio – Persistent Storage Assignment</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio | Todd Upshaw</title>
 
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #222;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        #projects {
+            padding: 30px;
+        }
+        .project-card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+        .project-card img {
+            width: 120px;
+        }
+        .project-card a {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+            padding: 8px 12px;
+            background: #222;
+            color: white;
+            border-radius: 6px;
+        }
+    </style>
 </head>
+
 <body>
-
-    <!-- Dark Mode Toggle -->
-    <label class="theme-toggle">
-        <input type="checkbox" id="darkToggle">
-        Dark Mode
-    </label>
-
-    <!-- Opening Modal -->
-    <div id="welcomeModal" class="modal">
-        <div class="modal-content">
-            <h2>This page is a work in progress.</h2>
-            <button id="closeModal">Close</button>
-        </div>
-    </div>
-
     <header>
-        <h1 id="title">My Portfolio</h1>
+        <h1>Todd Upshaw | Portfolio</h1>
+        <p>Dynamic Project Rendering with JavaScript</p>
     </header>
 
     <section id="projects">
-        <h2>Projects</h2>
-        <p>Here are some of my latest projects.</p>
-    </section>
-
-    <section id="about">
-        <h2>About Me</h2>
-        <p>This is where information about me will go.</p>
-    </section>
-
-    <!-- Contact Form -->
-    <section id="contact">
-        <h2>Contact Me</h2>
-
-        <form id="contactForm">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Email Address" required>
-            <textarea placeholder="Your Message" required></textarea>
-
-            <button id="submitBtn" type="submit">
-                Submit
-                <span class="tooltip">Click to send your message!</span>
-            </button>
-        </form>
-
-        <p id="formStatus"></p>
+        <h2>My Projects</h2>
+        <div id="projectContainer"></div>
     </section>
 
     <script src="script.js"></script>
